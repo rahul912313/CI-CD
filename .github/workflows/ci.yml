@@ -1,4 +1,4 @@
-name: Building the project befor PR
+name: Build the project before PR
 
 on:
   pull_request:
@@ -6,20 +6,20 @@ on:
       - "**"
 
 jobs:
-  Continuous-Integration:
+  continuous-integration:
     name: Build the project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
       - name: Install dependencies
-        uses: npm install
+        run: npm install
 
-      - name: Builds the project
-        uses: npm run build
+      - name: Build the project
+        run: npm run build
