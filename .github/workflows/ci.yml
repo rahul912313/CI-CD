@@ -1,0 +1,25 @@
+name: Building the project befor PR
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  Continuous-Integration:
+    name: Build the project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        uses: npm install
+
+      - name: Builds the project
+        uses: npm run build
